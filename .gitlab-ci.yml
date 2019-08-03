@@ -18,22 +18,23 @@ build:
   image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
   script:
     - docker build -t ineentho/git-semver-store .
-    - docker save ineentho/git-semver-store > image/git-semver-store.tar
+    - docker save ineentho/git-semver-store > git-semver-store.tar
   artifacts:
     paths:
-      - image/git-semver-store.tar
+      - git-semver-store.tar
+    expire_in: 1 week
 
 test:
   stage: test
   image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
 
   script:
-    - docker load -i image/git-semver-store.tar
+    - docker load -i git-semver-store.tar
     - docker run --rm ineentho/git-semver-store ssh://git@gitlab.henrik.ninja:10022/ineentho/versions-test.git test.txt patch $CI_COMMIT_SHA
 
 push:
   stage: push
   image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
   script:
-    - docker load -i image/git-semver-store.tar
+    - docker load -i git-semver-store.tar
     - docker push ineentho/git-semver-store
