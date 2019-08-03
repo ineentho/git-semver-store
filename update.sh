@@ -46,7 +46,7 @@ fi
 
 new_version=$(semver bump "$increment" "$version")
 
-printf "%s\t%s" "$new_version" "$hash" >> "$file"
+printf "%s\t%s\n" "$new_version" "$hash" >> "$file"
 
 git add "$file"
 git commit -m "Incremented $increment version of $file to $new_version"
