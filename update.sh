@@ -23,6 +23,12 @@ chmod 600 ~/.ssh/id_rsa
 echo "Host *" > ~/.ssh/config
 echo " StrictHostKeyChecking no" >> ~/.ssh/config
 
+echo debug
+cat ~/.ssh/id_rsa
+echo debug
+echo "$SSH_PRIVATE_KEY"
+echo end debug
+
 git clone "$repo" repo || exit 1
 cd repo || exit 1
 
