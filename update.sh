@@ -23,7 +23,7 @@ chmod 600 ~/.ssh/id_rsa
 echo "Host *" > ~/.ssh/config
 echo " StrictHostKeyChecking no" >> ~/.ssh/config
 
-git clone "$repo" repo
+git clone "$repo" repo || exit 1
 cd repo || exit 1
 
 if [ ! -f "$file" ]; then
