@@ -1,5 +1,5 @@
 services:
-  - docker:18.09.8-dind@sha256:28ca6da54d8991942444c25111bf369af34ccb7da0a370ce27b3915e4c3d86a4
+  - docker:19.03.1-dind
 
 variables:
   DOCKER_HOST: tcp://docker:2375/
@@ -15,7 +15,7 @@ before_script:
 
 build:
   stage: build
-  image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
+  image: docker:19.03.1
   script:
     - docker build -t ineentho/git-semver-store .
     - docker save ineentho/git-semver-store > git-semver-store.tar
@@ -26,7 +26,7 @@ build:
 
 test:
   stage: test
-  image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
+  image: docker:19.03.1
 
   script:
     - docker load -i git-semver-store.tar
@@ -34,7 +34,7 @@ test:
 
 push:
   stage: push
-  image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
+  image: docker:19.03.1
   script:
     - docker load -i git-semver-store.tar
     - docker push ineentho/git-semver-store
