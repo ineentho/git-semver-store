@@ -20,6 +20,11 @@ build:
       - git-semver-store.tar
     expire_in: 1 week
 
+shellcheck:
+  stage: test
+  image: koalaman/shellcheck:v0.7.0
+  script: update.sh
+
 test:
   stage: test
   image: docker:19.03.1
