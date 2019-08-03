@@ -1,0 +1,30 @@
+services:
+  - docker:18.09.8-dind@sha256:28ca6da54d8991942444c25111bf369af34ccb7da0a370ce27b3915e4c3d86a4
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - build
+  - test
+  - push
+
+build:
+  stage: build
+  image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
+  script:
+    - docker build -t ineentho/git-semver-store .
+
+test:
+  stage: test
+  image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
+
+  script:
+    - docker run --rm ineentho/git-semver-store ssh://git@gitlab.henrik.ninja:10022/ineentho/versions-test.git test.txt patch $CI_COMMIT_SHA
+
+push:
+  stage: push
+  image: docker:18.09.8@sha256:265571317aef5ef53bdc88459d9e6e502e47a655b42fda0dfb5b461ddc6a39c2
+  script:
+    - docker push ineentho/git-semver-store
