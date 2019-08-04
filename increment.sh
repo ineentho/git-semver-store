@@ -6,7 +6,7 @@ increment=$3
 hash=$4
 
 if [ ! "$repo" ] || [ ! "$file" ] || [ ! "$increment" ] || [ ! "$hash" ]; then
-    echo Usage: git-semver-store repo file increment
+    echo Usage: increment repo file increment hash
     echo
     echo repo: The full ssh url to the version repo, example: git@github.com:my/version-repo.git
     echo file: The path to the version file, example: project-name.txt

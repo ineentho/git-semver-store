@@ -10,6 +10,5 @@ RUN git config --global user.email "git-semver-store@henrik.ninja" &&\
 RUN mkdir /app && mkdir -p ~/.ssh
 WORKDIR /app
 
-COPY ./update.sh ./update.sh
-
-ENTRYPOINT [ "/app/update.sh" ]
+COPY ./increment.sh /usr/local/bin/increment
+COPY ./check.sh /usr/local/bin/check

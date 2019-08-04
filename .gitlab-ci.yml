@@ -31,8 +31,7 @@ test:
 
   script:
     - docker load -i git-semver-store.tar
-    - version=$(docker run --rm -e SSH_PRIVATE_KEY ineentho/git-semver-store ssh://git@gitlab.henrik.ninja:10022/ineentho/versions-test.git test.txt patch $CI_COMMIT_SHA)
-    - "echo version: $version"
+    - ./test.sh || exit 1
 
 push:
   stage: push
