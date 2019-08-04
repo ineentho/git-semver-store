@@ -23,13 +23,7 @@ chmod 600 ~/.ssh/id_rsa
 echo "Host *" > ~/.ssh/config
 echo " StrictHostKeyChecking no" >> ~/.ssh/config
 
-echo debug
-cat ~/.ssh/id_rsa
-echo debug
-echo "$SSH_PRIVATE_KEY"
-echo end debug
-
-git clone "$repo" repo || exit 1
+git clone "$repo" repo 1>&2 || exit 1
 cd repo || exit 1
 
 if [ ! -f "$file" ]; then
@@ -49,6 +43,8 @@ new_version=$(semver bump "$increment" "$version")
 printf "%s\t%s\n" "$new_version" "$hash" >> "$file"
 
 git add "$file"
-git commit -m "Incremented $increment version of $file to $new_version"
+git commit -m "Incremented $increment version of $file to $new_version" 1>&2
 
 git push
+
+printf "%s" "$new_version"
