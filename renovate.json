@@ -2,6 +2,5 @@
   "extends": ["config:base"],
   "automerge": true,
   "rangeStrategy": "bump",
-  "pinDigests": true,
-  "masterIssue": true
+  "pinDigests": true
 }
