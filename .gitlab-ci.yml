@@ -44,6 +44,11 @@ push:
   script:
     - docker load -i git-semver-store.tar
     - version=$(docker run --rm -e SSH_PRIVATE_KEY="$VERSIONS_INEENTHO_SSH_PRIVATE_KEY" ineentho/git-semver-store increment ssh://git@gitlab.henrik.ninja:10022/ineentho/versions.git git-semver-store.txt patch "$CI_COMMIT_SHA")
-    - image="ineentho/git-semver-store:$version"
-    - docker tag ineentho/git-semver-store $image
-    - docker push $image
+
+    - image_version="ineentho/git-semver-store:$version"
+    - docker tag ineentho/git-semver-store $image_version
+    - docker push $image_version
+
+    - image_latest="ineentho/git-semver-store:latest"
+    - docker tag ineentho/git-semver-store $image_latest
+    - docker push $image_latest
