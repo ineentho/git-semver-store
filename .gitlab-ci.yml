@@ -33,12 +33,15 @@ test:
     - docker load -i git-semver-store.tar
     - ./test.sh || exit 1
 
+before_script:
+  - docker login -u $DOCKER_USERNAME -p "$DOCKER_PASSWORD"
+
 push:
   stage: push
   image: docker:19.03.1
   script:
     - docker load -i git-semver-store.tar
-    - version=$(docker run --rm -e SSH_PRIVATE_KEY="$VERSIONS_INEENTHO_SSH_PRIVATE_KEY" ineentho/git-semver-store increment ssh://git@gitlab.henrik.ninja:10022/ineentho/versions-test.git test.txt patch "$CI_COMMIT_SHA")
+    - version=$(docker run --rm -e SSH_PRIVATE_KEY="$VERSIONS_INEENTHO_SSH_PRIVATE_KEY" ineentho/git-semver-store increment ssh://git@gitlab.henrik.ninja:10022/ineentho/versions.git git-semver-store.txt patch "$CI_COMMIT_SHA")
     - image="ineentho/git-semver-store:$version"
     - docker tag ineentho/git-semver-store $image
     - docker push $image
