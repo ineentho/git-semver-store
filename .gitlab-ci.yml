@@ -1,5 +1,5 @@
 services:
-  - docker:19.03.1-dind
+  - docker:19.03.1-dind@sha256:51db44dc2056a5c7f9c3a81346e84edc5c979ec183f54983d70b1c452dbdc8b5
 
 variables:
   DOCKER_HOST: tcp://docker:2376/
@@ -11,7 +11,7 @@ stages:
 
 build:
   stage: build
-  image: docker:19.03.1
+  image: docker:19.03.1@sha256:021de036f36d3e5c9ba5dd832276c51ea0f9ed413eab075016812bf70c046319
   script:
     - docker build -t ineentho/git-semver-store .
     - docker save ineentho/git-semver-store > git-semver-store.tar
@@ -22,12 +22,12 @@ build:
 
 shellcheck:
   stage: test
-  image: koalaman/shellcheck-alpine:v0.7.0
+  image: koalaman/shellcheck-alpine:v0.7.0@sha256:169a51b086af0ab181e32801c15deb78944bb433d4f2c0a21cc30d4e60547065
   script: shellcheck *.sh
 
 test:
   stage: test
-  image: docker:19.03.1
+  image: docker:19.03.1@sha256:021de036f36d3e5c9ba5dd832276c51ea0f9ed413eab075016812bf70c046319
 
   script:
     - docker load -i git-semver-store.tar
@@ -35,7 +35,7 @@ test:
 
 push:
   stage: push
-  image: docker:19.03.1
+  image: docker:19.03.1@sha256:021de036f36d3e5c9ba5dd832276c51ea0f9ed413eab075016812bf70c046319
   only:
     refs:
       - master
