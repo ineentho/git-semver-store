@@ -1,5 +1,5 @@
 services:
-  - docker:19.03.1-dind@sha256:b78943b12e0961ef4ab5b22e8410ff7abcc3ba68a23b0a0f1bff277b85f0322b
+  - docker:19.03.1-dind@sha256:905584f26588da290ecbe1589fba800f15fc439d635d8cf23191495fdc938af4
 
 variables:
   DOCKER_HOST: tcp://docker:2376/
