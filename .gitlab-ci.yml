@@ -11,7 +11,7 @@ stages:
 
 build:
   stage: build
-  image: docker:19.03.1@sha256:f6df9414b2b1fec009d8fb5a677d9e37175ddea61eceebae6ac6c79476bd274b
+  image: docker:19.03.1@sha256:2dcf87c9893b05ab815880e3d223cd6976c388a6f6697de10e90523255259ca4
   script:
     - docker build -t ineentho/git-semver-store .
     - docker save ineentho/git-semver-store > git-semver-store.tar
@@ -27,7 +27,7 @@ shellcheck:
 
 test:
   stage: test
-  image: docker:19.03.1@sha256:f6df9414b2b1fec009d8fb5a677d9e37175ddea61eceebae6ac6c79476bd274b
+  image: docker:19.03.1@sha256:2dcf87c9893b05ab815880e3d223cd6976c388a6f6697de10e90523255259ca4
 
   script:
     - docker load -i git-semver-store.tar
@@ -35,7 +35,7 @@ test:
 
 push:
   stage: push
-  image: docker:19.03.1@sha256:f6df9414b2b1fec009d8fb5a677d9e37175ddea61eceebae6ac6c79476bd274b
+  image: docker:19.03.1@sha256:2dcf87c9893b05ab815880e3d223cd6976c388a6f6697de10e90523255259ca4
   only:
     refs:
       - master
