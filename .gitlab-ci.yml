@@ -8,7 +8,7 @@ stages:
 
 build:
   stage: build
-  image: docker:19.03.5@sha256:6daea00729cf32ae7e01aa648d1dc47ce45e470e77f5119126e08ce602e79f81
+  image: docker:19.03.5@sha256:0b90b0aefd15794e4d5bea2debc3b761c1d3481a92ec7166f8453652d0deba95
   services:
     - docker:19.03.5-dind@sha256:eee82e8076e846f428b4fc202a1d35352097cb12644c54b111c6155bc03f9edc
   tags:
@@ -28,7 +28,7 @@ shellcheck:
 
 test:
   stage: test
-  image: docker:19.03.5@sha256:6daea00729cf32ae7e01aa648d1dc47ce45e470e77f5119126e08ce602e79f81
+  image: docker:19.03.5@sha256:0b90b0aefd15794e4d5bea2debc3b761c1d3481a92ec7166f8453652d0deba95
   services:
     - docker:19.03.5-dind@sha256:eee82e8076e846f428b4fc202a1d35352097cb12644c54b111c6155bc03f9edc
   tags:
@@ -40,7 +40,7 @@ test:
 
 push:
   stage: push
-  image: docker:19.03.5@sha256:6daea00729cf32ae7e01aa648d1dc47ce45e470e77f5119126e08ce602e79f81
+  image: docker:19.03.5@sha256:0b90b0aefd15794e4d5bea2debc3b761c1d3481a92ec7166f8453652d0deba95
   services:
     - docker:19.03.5-dind@sha256:eee82e8076e846f428b4fc202a1d35352097cb12644c54b111c6155bc03f9edc
   tags:
