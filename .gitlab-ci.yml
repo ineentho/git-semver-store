@@ -10,7 +10,7 @@ build:
   stage: build
   image: docker:19.03.5@sha256:6daea00729cf32ae7e01aa648d1dc47ce45e470e77f5119126e08ce602e79f81
   services:
-    - docker:19.03.5-dind@sha256:eee82e8076e846f428b4fc202a1d35352097cb12644c54b111c6155bc03f9edc
+    - docker:19.03.5-dind@sha256:033ba84f8ea98910d8fc51b8263fbeb24c48d6daf55ef7c654e2981784dac2f4
   tags:
     - dind
   script:
@@ -30,7 +30,7 @@ test:
   stage: test
   image: docker:19.03.5@sha256:6daea00729cf32ae7e01aa648d1dc47ce45e470e77f5119126e08ce602e79f81
   services:
-    - docker:19.03.5-dind@sha256:eee82e8076e846f428b4fc202a1d35352097cb12644c54b111c6155bc03f9edc
+    - docker:19.03.5-dind@sha256:033ba84f8ea98910d8fc51b8263fbeb24c48d6daf55ef7c654e2981784dac2f4
   tags:
     - dind
 
@@ -42,7 +42,7 @@ push:
   stage: push
   image: docker:19.03.5@sha256:6daea00729cf32ae7e01aa648d1dc47ce45e470e77f5119126e08ce602e79f81
   services:
-    - docker:19.03.5-dind@sha256:eee82e8076e846f428b4fc202a1d35352097cb12644c54b111c6155bc03f9edc
+    - docker:19.03.5-dind@sha256:033ba84f8ea98910d8fc51b8263fbeb24c48d6daf55ef7c654e2981784dac2f4
   tags:
     - dind
   only:
