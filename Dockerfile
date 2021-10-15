@@ -1,4 +1,4 @@
-FROM alpine:3.10.3@sha256:e4355b66995c96b4b468159fc5c7e3540fcef961189ca13fee877798649f531a
+FROM alpine:3.10.3@sha256:c19173c5ada610a5989151111163d28a67368362762534d8a8121ce95cf2bd5a
 
 RUN apk --no-cache add openssh-client git bash
 
