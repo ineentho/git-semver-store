@@ -23,7 +23,7 @@ build:
 
 shellcheck:
   stage: test
-  image: koalaman/shellcheck-alpine:v0.7.0@sha256:169a51b086af0ab181e32801c15deb78944bb433d4f2c0a21cc30d4e60547065
+  image: koalaman/shellcheck-alpine:v0.8.0@sha256:f42fde76d2d14a645a848826e54a4d650150e151d9c81057c898da89a82c8a56
   script: shellcheck *.sh
 
 test:
